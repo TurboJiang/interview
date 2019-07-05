@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局对象 this指向全局、window
+        let a = {
+            user:'刘昊然',
+            fn:function(e,m) {
+                console.log(this.user)//this指向window
+                console.log(e+m)
+            }
+        }
+        let b = a.fn
+        b()// undifined
+        a.fn(2,3)//window.a.fn()
+
+        b.call(a,2,3)//.call(this要指向的对象,...其他参数) 5
+        b.apply(a,[2,3]) //5
+        let c = b.bind(a,2,3)
+        c() // 5
+        let d = b.bind(a,3)
+        d(5,2) //8
+    </script>
+</body>
+</html>

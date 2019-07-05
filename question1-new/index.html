@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- new方法的实现原理 -->
+    <script>
+        // function _new() {}
+        let _new = function () {
+            // 1.创建一个新的对象
+            let target = {}
+            // 2.定义方法的参数:参数解构
+            let [constructor, ...args] = [...arguments]
+            // 3.给新对象的隐式原型（__proto__:在对象上）上构造显式原型（prototype:只在函数上——>所有都有__ptoto__,只有函数有prototype
+            target.__proto__ = constructor.prototype//执行原型连接 将prototype赋到__proto__上  target是contrcutor出来的实例
+            // 4.执行构造函数 将函数的属性或者方法添加到创建的空对象上
+            let result = constructor.apply(target, args)//指定this的作用域
+            // 5.判断是否是对象/函数:如果result存在 且typeof result为object 或者typeof result 为function
+            if (result && typeof(result)==='object' || typeof(result) === 'function') {
+                return result;
+            }
+            return target
+        }
+    </script>
+</body>
+
+</html>
