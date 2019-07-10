@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 深拷贝 -->
+    <script>
+        let obj = {
+            name: '刘昊然',
+            age: 21,
+            like: ['basketball', 'sleep']
+        }
+        // json字符串----->json对象 JSON.parse
+        // json对象------>json字符串 JSON.stringify
+        let obj1 = JSON.parse(JSON.stringify(obj))
+        // 基础类型不改变
+        obj.name = 'liu'
+        console.log(obj,obj1)
+        // 复杂数据类型也不改变
+        obj.like.push('sleep')
+        console.log(obj,obj1)
+    </script>
+</body>
+
+</html>

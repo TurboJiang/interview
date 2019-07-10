@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- .call()方法的实现原理 -->
+    <script>
+        // 函数均可使用call()方法（在原型链上）
+        Function.prototype.call = function () {
+            // 定义参数
+            let [thisArg, ...args] = [...arguments]
+            if (!thisArg) {
+                // typeof window为undefined 设为global，不为undefined设为window
+                thisArg = typeof window ==='undefined' ? global : window
+            }
+            // this的指向是当前函数 func  在thisArg上添加func方法属性
+            thisArg.func = this
+            // 执行函数
+            let result = thisArg.func(...args) //this指向的对象(...args) call方法中传进来的第一个参数对象是谁，thisArg.func就指向哪个对象
+            // 占了内存 已经赋值，后续可调用，清内存
+            delete thisArg.func
+            return result
+        }
+    </script>
+</body>
+
+</html>

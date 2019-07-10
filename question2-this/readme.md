@@ -21,9 +21,13 @@
         }
         var obj = new showName();
         console.log(obj.name); //showName function
-    4.call & apply & bind
-        - call(this要指向的对象，参数1，参数2，参数3...)
+- 修改this作用域
+    1.call & apply & bind
+        - call(this要指向的对象，参数1，参数2，参数3...) ——>实现原理见index1.html
         - apply(this要指向的对象，[参数1，参数2，参数3...])
         - bind()——>返回的值是函数类型 要以函数的形式调用
             let c = b.bind(a)
             c()
+    2.new实例化一个对象
+    3.函数内部 定义变量，将this赋值给变量
+    4.使用箭头函数

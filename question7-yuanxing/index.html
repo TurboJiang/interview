@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Student(name) {
+            this.name = name
+        }
+        Student.prototype.setAge = function () {
+            this.age = 20
+        }
+        let lhr = new Student('lhr')
+        // 实例对象的隐式原型链
+        console.log(lhr.__proto__)
+        // 构造函数的显式原型
+        console.log(Student.prototype)
+    </script>
+</body>
+
+</html>

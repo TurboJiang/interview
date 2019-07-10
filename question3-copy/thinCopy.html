@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 浅拷贝 -->
+    <script>
+        let obj = {
+            name: '刘昊然',
+            age: 21,
+            like: ['basketball', 'sleep']
+        }
+        // 浅拷贝
+        // 对象拼接 {}+obj
+        let obj2 = Object.assign({}, obj)
+        // 打散
+        let obj3 = { ...obj }
+        console.log(obj2, obj3)// 一样的哩
+
+        // 基础数据类型不发生改变
+        // 修改name obj发生改变，obj2，obj3已经引用，数据不变
+        obj.name = 'liu'
+        console.log(obj,obj2,obj3)// 依旧是一样的哩
+        // 复杂数据类型发生改变
+        obj.like.push('foodie')
+        console.log(obj2,obj3)// 不一样了哩，加进去了欸
+    </script>
+</body>
+
+</html>
